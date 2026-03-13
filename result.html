@@ -254,7 +254,7 @@ fetch(sheetAudio).then(r=>r.json())
 const allData = data1.concat(data2);
 
 const result = allData.find(
-row => row["Submission ID"] === submissionId
+row => String(row["Submission ID"]) === String(submissionId)
 );
 
 if(result){
