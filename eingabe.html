@@ -142,4 +142,44 @@
     }
   </script>
 <!-- END: Iframe Handler -->
+ <script>
+
+window.addEventListener("message", function(event) {
+
+if(typeof event.data !== "string") return;
+
+const args = event.data.split(":");
+
+if(args[0] === "submission-completed"){
+
+const submissionId = args[1];
+
+const buttonContainer = document.createElement("div");
+
+buttonContainer.style.textAlign = "center";
+buttonContainer.style.marginTop = "30px";
+
+buttonContainer.innerHTML = `
+<a href="results.html?submission_id=${submissionId}" 
+style="
+display:inline-block;
+background:#db0000;
+color:white;
+padding:14px 28px;
+border-radius:8px;
+font-weight:600;
+text-decoration:none;
+font-size:16px;
+">
+Ergebnis ansehen
+</a>
+`;
+
+document.querySelector(".iframe-container").appendChild(buttonContainer);
+
+}
+
+});
+
+</script>
 </body></html>
